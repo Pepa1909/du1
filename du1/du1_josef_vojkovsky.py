@@ -1,4 +1,5 @@
 from turtle import *
+delka_strany = 50
 # základní informace pro hráče
 print("""
 Dobrý den, 
@@ -25,20 +26,20 @@ down()
 for _ in range(3):
     for _ in range(3):
         for _ in range(8):
-            forward(50)
+            forward(delka_strany)
             left(60)
         right(120)
     right(120)
     for _ in range(3):
-            forward(50)
+            forward(delka_strany)
             right(60)
-            forward(50)
+            forward(delka_strany)
             left(60)
     left(120)
-    forward(50)
+    forward(delka_strany)
     right(60)
     up()
-    forward(50)
+    forward(delka_strany)
     left(60)
     down()
 # hra samotná - celý for cyklus
