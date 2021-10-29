@@ -3,7 +3,6 @@ from turtle import *
 print("""
 Dobrý den, 
 budete hrát piškvorky v šestiúhelníkovém poli 3x3. Musíte sledovat jak hrací tabulku, tak dodatečné informace v terminálu.
-Během hry může kdykoliv napsat quit a tím hru ukončit.
 Rozmístění políček je následující:
          3 
      2       6
@@ -25,13 +24,10 @@ left(180)
 down()
 for _ in range(3):
     for _ in range(3):
-        for _ in range(6):
+        for _ in range(8):
             forward(50)
             left(60)
-        forward(50)
-        left(60)
-        forward(50)
-        right(60)
+        right(120)
     right(120)
     for _ in range(3):
             forward(50)
