@@ -2,93 +2,70 @@ from turtle import *
 # základní informace pro hráče
 print("""
 Dobrý den, 
-budete hrát piškvorky v šestiúhelníkovém poli 3x3. Musíte sledovat jak hrací tabulku, tak dodatečné informace v terminálu.
-Během hry může kdykoliv napsat quit a tím hru ukončit.
-Rozmístění políček je následující:
-         3 
-     2       6
- 1       5       9
-     4       8
-         7
+budete hrát piškvorky, velikost herního pole i velikost čtverečků si můžete sami zvolit. Musíte sledovat jak hrací tabulku,
+tak dodatečné informace v terminálu.
+Souřadnice políček se vybírají pomocí souřadnice x a poté y jako na osách. Políčko nejvíce vlevo dole má souřadnice (1,1).
 """)
 # jména hráčů pro oslovení během hry
 hrac_1 = input("Jméno hráče 1: ")
 print("Vy budete hrát s křížky.")
 hrac_2 = input("Jméno hráče 2: ")
 print("Váš tvar jsou kolečka.")
-# posun doleva dolů, aby bylo dost místa + vykreslení tabulky 3x3
+# posun doleva dolů, aby bylo dost místa + vykreslení tabulky
 speed(0)
 up()
-left(180)
-forward(300)
-left(180)
+hrana = int(input("Jak velká má být hrana políčka?  (Ideální velikost cca 50-100):  "))
+velikost_x = int(input("Kolik má mít hrací plocha sloupců? "))
+velikost_y = int(input("Kolik má mít hrací plocha řádků? "))
+setpos(-350,-320)
 down()
-for _ in range(3):
-    for _ in range(3):
-        for _ in range(6):
-            forward(50)
-            left(60)
-        forward(50)
-        left(60)
-        forward(50)
-        right(60)
-    right(120)
-    for _ in range(3):
-            forward(50)
-            right(60)
-            forward(50)
-            left(60)
-    left(120)
-    forward(50)
-    right(60)
-    up()
-    forward(50)
-    left(60)
-    down()
-# hra samotná - celý for cyklus
+for _ in range (velikost_y):
+    for _ in range(velikost_x):
+        for _ in range(4):
+            forward(hrana)
+            left(90)
+        forward(hrana)
+    left(180)
+    forward(hrana*velikost_x)
+    right(90)
+    forward(hrana)
+    right(90)
+# hra samotná - celý for cyklus - počet kol se odvíjí od velikosti hrací plochy
 speed(6)
-for kolo in range(9):
+for kolo in range(velikost_x*velikost_y):
     up()
 # jak poznat sudé a liché kolo --> koho oslovit
     if kolo % 2 == 0:
-        tah = (int(input(f"{hrac_1}, vyber políčko (čísla 1-9): ")))
+        tah_x = (int(input(f"{hrac_1}, vyber x souřadnici, kde budeš chtít hrát: ")))
+        while tah_x > velikost_x or tah_x <= 0:
+            tah_x = int(input("Zkus to znovu, zadej souřadnici x: "))
+        tah_y = (int(input(f"{hrac_1}, vyber y souřadnici, kde budeš chtít hrát: ")))
+        while tah_y > velikost_y or tah_y <= 0:
+            tah_y = int(input("Zkus to znovu, zadej souřadnici y: "))
     else:
-        tah = (int(input(f"{hrac_2}, vyber políčko (čísla 1-9): ")))
+        tah_x = (int(input(f"{hrac_2}, vyber x souřadnici, kde budeš chtít hrát: ")))
+        while tah_x > velikost_x or tah_x <= 0:
+            tah_x = int(input("zkus to znovu, zadej souřadnici x: "))
+        tah_y = (int(input(f"{hrac_2}, vyber y souřadnici, kde budeš chtít hrát: ")))
+        while tah_y > velikost_y or tah_y <= 0:
+            tah_y = int(input("zkus to znovu, zadej souřadnici y: "))
 # želva zajede do správného políčka
-    while tah < 1 or tah > 9:
-        tah = int(input("zkus to znovu: "))
-    if tah == 1:
-        setpos(-275, 8)
-    elif tah == 2:
-        setpos(-200,51)
-    elif tah == 3:
-        setpos(-125,94)         
-    elif tah == 4:
-        setpos(-200,-35)
-    elif tah == 5:
-        setpos(-125,8)
-    elif tah == 6:
-        setpos(-50, 51)         
-    elif tah == 7:
-        setpos(-125, -78)
-    elif tah == 8:
-        setpos(-50, -35)     
-    elif tah == 9:
-        setpos(25,8)
+    setpos(-350+(hrana/2)+hrana*(tah_x-1),-320+(hrana/2)+hrana*(tah_y-1))
 # jak se pozná, jestli se kreslí křížek nebo kolečko (jako u oslovení) + vykreslení tvaru
     if kolo % 2 == 0:
-        left(90)
-        forward(35)
+        down()
         left(45)
-        down()
         for _ in range(4):
-            forward(40)
+            forward(hrana/2)
             left(180)
-            forward(40)
+            forward(hrana/2)
             left(90)
-        right(135)
+        right(45)
     else:
+        right(90)
+        forward(hrana*0.4)
+        left(90)
         down()
-        circle(35)
-print("A jsme u konce, klikněte do okna piškvorek pro ukončení.")
+        circle(hrana*0.4)
+print("A jsme u konce, klikněte do okna piškvorek pro ukončení \U0001F642")
 exitonclick()
