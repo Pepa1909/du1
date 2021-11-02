@@ -8,9 +8,9 @@ Souřadnice políček se vybírají pomocí souřadnice x a poté y jako na osá
 """)
 # jména hráčů pro oslovení během hry
 hrac_1 = input("Jméno hráče 1: ")
-print("Vy budete hrát s křížky.")
+print("Ty budeš hrát s křížky.")
 hrac_2 = input("Jméno hráče 2: ")
-print("Váš tvar jsou kolečka.")
+print("Tvůj tvar jsou kolečka.")
 # posun doleva dolů, aby bylo dost místa + vykreslení tabulky
 speed(0)
 up()
