@@ -1,4 +1,4 @@
-from turtle import *
+from turtle import * 
 # základní informace pro hráče
 print("""
 Dobrý den, 
