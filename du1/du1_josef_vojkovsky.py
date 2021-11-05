@@ -1,4 +1,4 @@
-from turtle import * 
+from turtle import speed, up, down, setpos, forward, left, right, exitonclick, circle
 # základní informace pro hráče
 print("""
 Dobrý den, 
@@ -15,8 +15,14 @@ print("Tvůj tvar jsou kolečka.")
 speed(0)
 up()
 hrana = int(input("Jak velká má být hrana políčka?  (Ideální velikost cca 50-100):  "))
+while hrana < 1:
+    hrana = int(input("Nemůžeš mít zápornou ani nulovou délku hrany! Zadej znovu: "))
 velikost_x = int(input("Kolik má mít hrací plocha sloupců? "))
+while velikost_x < 1:
+    velikost_x = int(input("Nemůžeš mít záporný nebo nulový počet sloupců! Zadej znovu: "))
 velikost_y = int(input("Kolik má mít hrací plocha řádků? "))
+while velikost_y < 1:
+    velikost_y = int(input("Nemůžeš mít záporný nebo nulový počet řádků! Zadej znovu: "))
 setpos(-350,-320)
 down()
 for _ in range (velikost_y):
@@ -34,7 +40,7 @@ for _ in range (velikost_y):
 speed(6)
 for kolo in range(velikost_x*velikost_y):
     up()
-# jak poznat sudé a liché kolo --> koho oslovit
+    # jak poznat sudé a liché kolo --> koho oslovit
     if kolo % 2 == 0:
         tah_x = (int(input(f"{hrac_1}, vyber x souřadnici, kde budeš chtít hrát: ")))
         while tah_x > velikost_x or tah_x <= 0:
@@ -49,9 +55,9 @@ for kolo in range(velikost_x*velikost_y):
         tah_y = (int(input(f"{hrac_2}, vyber y souřadnici, kde budeš chtít hrát: ")))
         while tah_y > velikost_y or tah_y <= 0:
             tah_y = int(input("zkus to znovu, zadej souřadnici y: "))
-# želva zajede do správného políčka
+    # želva zajede do správného políčka
     setpos(-350+(hrana/2)+hrana*(tah_x-1),-320+(hrana/2)+hrana*(tah_y-1))
-# jak se pozná, jestli se kreslí křížek nebo kolečko (jako u oslovení) + vykreslení tvaru
+    # jak se pozná, jestli se kreslí křížek nebo kolečko (jako u oslovení) + vykreslení tvaru
     if kolo % 2 == 0:
         down()
         left(45)
