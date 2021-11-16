@@ -5,7 +5,7 @@ Dobrý den,
 budete hrát piškvorky, velikost herního pole i velikost čtverečků si můžete sami zvolit. Musíte sledovat jak hrací tabulku,
 tak dodatečné informace v terminálu.
 Souřadnice políček se vybírají pomocí souřadnice x a poté y jako na osách. Políčko nejvíce vlevo dole má souřadnice (1,1).
-""") 
+""")  
 # jména hráčů pro oslovení během hry
 hrac_1 = input("Jméno hráče 1: ")
 print("Ty budeš hrát s křížky.")
