@@ -5,4 +5,3 @@ with open("hm.csv", encoding="UTF-8") as csvfile, open("hm_out.csv", "w", encodi
     writer = csv.writer(csvoutfile)
     for row in reader:
         writer.writerow([row[-1]])
-     
