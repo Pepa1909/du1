@@ -23,7 +23,7 @@ while velikost_x < 1:
 velikost_y = int(input("Kolik má mít hrací plocha řádků? "))
 while velikost_y < 1:
     velikost_y = int(input("Nemůžeš mít záporný nebo nulový počet řádků! Zadej znovu: "))
-setpos(-350,-320)
+setpos(-350,-300)
 down()
 for _ in range (velikost_y):
     for _ in range(velikost_x):
@@ -56,7 +56,7 @@ for kolo in range(velikost_x*velikost_y):
         while tah_y > velikost_y or tah_y <= 0:
             tah_y = int(input("zkus to znovu, zadej souřadnici y: "))
     # želva zajede do správného políčka
-    setpos(-350+(hrana/2)+hrana*(tah_x-1),-320+(hrana/2)+hrana*(tah_y-1))
+    setpos(-350+(hrana/2)+hrana*(tah_x-1),-300+(hrana/2)+hrana*(tah_y-1))
     # jak se pozná, jestli se kreslí křížek nebo kolečko (jako u oslovení) + vykreslení tvaru
     if kolo % 2 == 0:
         down()
