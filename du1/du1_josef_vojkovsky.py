@@ -73,5 +73,5 @@ for kolo in range(velikost_x*velikost_y):
         left(90)
         down()
         circle(hrana*0.4)
-print("A jsme u konce, klikněte do okna piškvorek pro ukončení \U0001F642")
+print("A jsme u konce, klikněte do okna piškvorek pro ukončení \U0001F642.")
 exitonclick()
